@@ -8,9 +8,9 @@ export default function ChatLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-4 flex md:p-0">
+    <div className="flex md:p-0">
       <Menu />
-      <div className="flex flex-col flex-1 ">
+      <div className="flex flex-col flex-1 p-2">
         <ModelSelect />
         {children}
         <ChatInput />
