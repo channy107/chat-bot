@@ -11,7 +11,7 @@ export default async function middleware(req: NextRequest) {
   const cookie = cookies().get("session")?.value;
   const session = await decrypt(cookie);
 
-  if (isProtectedRoute && !session?.id) {
+  if (isProtectedRoute && !session) {
     let callbackUrl = pathname;
     if (search) {
       callbackUrl += search;
@@ -23,7 +23,7 @@ export default async function middleware(req: NextRequest) {
     );
   }
 
-  if (isPublicRoute && session?.id) {
+  if (isPublicRoute && session) {
     const param = new URLSearchParams(search);
     const callbackUrl = param.get("callbackUrl");
 

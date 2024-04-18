@@ -39,7 +39,7 @@ export const login = async (
       return { errorMessage: "비밀번호가 일치하지 않습니다." };
     }
 
-    await createSession({ id, email });
+    await createSession(email);
 
     redirect("/");
   }
