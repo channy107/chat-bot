@@ -23,6 +23,7 @@
       "@constants/*": ["./constants/*"],
       "@components/*": ["./components/*"],
       "@lib/*": ["./lib/*"],
+      "@hooks/*": ["./hooks/*"],
       "@db/*": ["./db/*"],
       "@schemas/*": ["./schemas/*"]
     }

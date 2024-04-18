@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-export const RegisterSchema = z.object({
+export const signUpSchema = z.object({
   name: z
     .string()
     .min(1, { message: "이름을 입력해주세요." })

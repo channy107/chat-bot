@@ -1,133 +1,81 @@
 "use client";
-
-import { z } from "zod";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { ChangeEvent, useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
 
 import { FormContainer } from "@components/auth/FormContainer";
+import { FormMessage } from "@components/auth/FormMessage";
 import { FormSuccess } from "@components/auth/FormSuccess";
 import { FormError } from "@components/auth/FormError";
 import { Input } from "@components/ui/input";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@components/ui/form";
-import { Button } from "@components/ui/button";
+import { Label } from "@components/ui/label";
 
-import { signup } from "@actions/signup";
-import { RegisterSchema } from "@schemas/auth";
-import { isSuccessResponse } from "@/types/guard";
+import { signUp } from "@actions/signUp";
+import { useFormValidate } from "@/hooks/useFormValidate";
+import { signUpSchema } from "@schemas/auth";
+import { TSignUpFormError } from "@/types/form";
+import { Submit } from "../Submit";
 
 export function SignUpForm() {
-  const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
-  const [loading, setLoading] = useState(false);
+  const [state, action] = useFormState(signUp, undefined);
+  const { errors, validateField, setErrors } =
+    useFormValidate<TSignUpFormError>(signUpSchema);
 
-  const form = useForm<z.infer<typeof RegisterSchema>>({
-    resolver: zodResolver(RegisterSchema),
-    mode: "onChange",
-    defaultValues: {
-      email: "",
-      password: "",
-      name: "",
-    },
-  });
-
-  const {
-    watch,
-    formState: { errors },
-  } = form;
-
-  const [name, email, password] = watch(["name", "email", "password"]);
-
-  const isValidateError = Object.keys(errors).length !== 0;
-  const isEmptyField = name === "" || email === "" || password === "";
-
-  const onSubmit = async (values: z.infer<typeof RegisterSchema>) => {
-    setSuccess("");
-    setError("");
-    setLoading(true);
-    const response = await signup(values);
-
-    setLoading(false);
-
-    if (isSuccessResponse(response)) {
-      setSuccess(response.data);
-    } else {
-      setError(response.message);
-    }
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    validateField(name, value);
   };
 
-  const isSubmitButtonDisabled = loading || isValidateError || isEmptyField;
+  useEffect(() => {
+    setErrors(state?.errors);
+  }, [state]);
 
   return (
     <FormContainer
       title="회원가입"
       link={{ label: "이미 계정이 있으신가요?", href: "/login" }}
     >
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="space-y-4">
-            <FormField
-              control={form.control}
+      <form action={action} className="space-y-6">
+        <div className="space-y-4">
+          <div className="space-y-1">
+            <Label>이름</Label>
+            <Input
+              id="name"
               name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder="이름을 입력해주세요." />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              placeholder="이름을 입력해주세요."
+              error={!!errors?.name}
+              onChange={handleChange}
             />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>이메일</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="example@example.com"
-                      type="email"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>비밀번호</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder="******" type="password" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {errors?.name && <FormMessage message={errors.name[0]} />}
           </div>
-          <FormSuccess message={success} />
-          <FormError message={error} />
-          <Button
-            disabled={isSubmitButtonDisabled}
-            type="submit"
-            className="w-full"
-          >
-            가입하기
-          </Button>
-        </form>
-      </Form>
+          <div className="space-y-1">
+            <Label>이메일</Label>
+            <Input
+              id="email"
+              name="email"
+              placeholder="example@example.com"
+              type="email"
+              error={!!errors?.email}
+              onChange={handleChange}
+            />
+            {errors?.email && <FormMessage message={errors.email[0]} />}
+          </div>
+          <div className="space-y-1">
+            <Label>비밀번호</Label>
+            <Input
+              id="password"
+              name="password"
+              placeholder="******"
+              type="password"
+              error={!!errors?.password}
+              onChange={handleChange}
+            />
+            {errors?.password && <FormMessage message={errors.password[0]} />}
+          </div>
+        </div>
+        <FormSuccess message={state?.successMessage} />
+        <FormError message={state?.errorMessage} />
+        <Submit text="가입하기" />
+      </form>
     </FormContainer>
   );
 }
