@@ -1,5 +1,6 @@
 "use server";
 
+import { STATUS_CODE } from "@constants/statusCode";
 import db from "@db/drizzle";
 import { TUser } from "@/types/db";
 import { TResponse } from "@/types/response";
@@ -13,17 +14,20 @@ export const getUserByEmail = async (
     });
 
     if (!user) {
-      return { statusCode: 404, message: "존재하지 않는 유저 입니다." };
+      return {
+        statusCode: STATUS_CODE.NOT_FOUND,
+        message: "존재하지 않는 유저 입니다.",
+      };
     }
 
-    return { statusCode: 200, data: user };
+    return { statusCode: STATUS_CODE.OK, data: user };
   } catch (error) {
     if (error instanceof CustomError) {
       return { statusCode: error.code, message: error.message };
     }
 
     return {
-      statusCode: 500,
+      statusCode: STATUS_CODE.INTERNAL_SERVER_ERROR,
       message: "문제가 발생했습니다. 잠시만 기다려주세요.",
     };
   }

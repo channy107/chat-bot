@@ -9,15 +9,15 @@ import { Submit } from "@components/Submit";
 import { Input } from "@components/ui/input";
 import { Label } from "@components/ui/label";
 
-import { signUp } from "@actions/signUp";
+import { login } from "@actions/login";
 import { useFormValidate } from "@hooks/useFormValidate";
-import { SignUpSchema } from "@schemas/auth";
-import { TSignUpFormError } from "@/types/form";
+import { LoginSchema } from "@schemas/auth";
+import { TLoginFormError } from "@/types/form";
 
-export function SignUpForm() {
-  const [state, action] = useFormState(signUp, undefined);
+export function LoginForm() {
+  const [state, action] = useFormState(login, undefined);
   const { errors, validateField, setErrors } =
-    useFormValidate<TSignUpFormError>(SignUpSchema);
+    useFormValidate<TLoginFormError>(LoginSchema);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -30,24 +30,13 @@ export function SignUpForm() {
 
   return (
     <FormCard
-      title="회원가입"
-      link={{ label: "이미 계정이 있으신가요?", href: "/login" }}
+      title="로그인"
+      link={{ label: "아직 계정이 없으신가요?", href: "/signup" }}
     >
       <form action={action} className="space-y-6">
         <div className="space-y-4">
           <div className="space-y-1">
-            <Label htmlFor="name">이름</Label>
-            <Input
-              id="name"
-              name="name"
-              placeholder="이름을 입력해주세요."
-              error={!!errors?.name}
-              onChange={handleChange}
-            />
-            {errors?.name && <FormMessage message={errors.name[0]} />}
-          </div>
-          <div className="space-y-1">
-            <Label htmlFor="email">이메일</Label>
+            <Label className="email">이메일</Label>
             <Input
               id="email"
               name="email"
@@ -72,7 +61,7 @@ export function SignUpForm() {
           </div>
         </div>
         <FormError message={state?.errorMessage} />
-        <Submit text="가입하기" />
+        <Submit text="로그인" />
       </form>
     </FormCard>
   );

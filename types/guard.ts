@@ -1,7 +1,8 @@
-import { SuccessResponse, TResponse } from "./response";
+import { STATUS_CODE } from "@/constants/statusCode";
+import { SuccessResponse, TResponse } from "@/types/response";
 
 export const isSuccessResponse = <T>(
   response: TResponse<T>
 ): response is SuccessResponse<T> => {
-  return response.statusCode === 200;
+  return response.statusCode === STATUS_CODE.OK;
 };

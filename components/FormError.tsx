@@ -4,7 +4,7 @@ interface Props {
   message?: string;
 }
 
-export const FormError = ({ message }: Props) => {
+export function FormError({ message }: Props) {
   if (!message) return null;
 
   return (
@@ -13,4 +13,4 @@ export const FormError = ({ message }: Props) => {
       <p className="whitespace-pre-wrap">{message}</p>
     </div>
   );
-};
+}

@@ -1,7 +1,6 @@
-import db from "@/db/drizzle";
+import { redirect } from "next/navigation";
+import { CHAT_ROUTES } from "@/constants/routes";
 
 export default async function Home() {
-  const user = await db.query.user.findMany();
-  console.log("user", user);
-  return <main>홈페이지</main>;
+  redirect(`${CHAT_ROUTES.NEW}`);
 }

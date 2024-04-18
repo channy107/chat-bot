@@ -14,7 +14,7 @@ type Props = {
   children: ReactNode;
 };
 
-export function FormContainer({ title, link, children }: Props) {
+export function FormCard({ title, link, children }: Props) {
   return (
     <Card className="w-[500px] flex flex-col items-center border-none shadow-none sm:border sm:shadow">
       <CardHeader>
