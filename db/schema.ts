@@ -10,6 +10,10 @@ export const user = pgTable("user", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
+export const userRelations = relations(user, ({ many }) => ({
+  conversations: many(conversation),
+}));
+
 export const conversation = pgTable("conversation", {
   id: uuid("id").defaultRandom().notNull().primaryKey(),
   name: text("name"),

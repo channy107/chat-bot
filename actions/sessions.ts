@@ -22,7 +22,7 @@ export async function encrypt(payload: SessionPayload) {
 
 export async function decrypt(session: string | undefined = "") {
   try {
-    const { payload } = await jwtVerify(session, encodedKey, {
+    const { payload } = await jwtVerify<SessionPayload>(session, encodedKey, {
       algorithms: ["HS256"],
     });
     return payload;
@@ -54,10 +54,12 @@ export function deleteSession() {
 }
 
 export const verifySession = async () => {
-  const session = cookies().get("session")?.value;
+  const cookie = cookies().get("session")?.value;
+  const session = await decrypt(cookie);
 
-  if (!session) {
+  if (!session?.id) {
     redirect("/login");
   }
-  return await decrypt(session);
+
+  return { id: session.id, email: session.email };
 };
