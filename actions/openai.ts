@@ -21,16 +21,9 @@ export const sendMessage = async (
   const response = await openai.chat.completions.create({
     model,
     messages,
-    stream: true,
   });
 
-  for await (const chunk of response) {
-    console.log(chunk.choices[0].delta.content);
-  }
-
-  console.log("response", response);
-
-  // return response.choices[0].message;
+  return response.choices[0].message;
 };
 
 export const uploadFile = async (formData: FormData) => {
@@ -88,6 +81,6 @@ export const sendTestMessage = async (
   await new Promise((resolve) => setTimeout(resolve, 2000));
   return {
     content:
-      "난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗난 chat gpt 챗챗챗",
+      "이것은 실제 chat gpt api 응답이 아닙니다. chat gpt api는 무료가 아니기 때문에 api 호출 server action을 구현해놓았지만 테스트 후 개발이나 배포한 상태에선 자체 응답 메시지로 대체합니다.",
   };
 };

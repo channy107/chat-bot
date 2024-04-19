@@ -77,7 +77,7 @@ export function ChatInput() {
 
   return (
     <Form {...form}>
-      <div className="sticky pb-5 bottom-0 z-10 w-[85%] bg-white">
+      <div className="sticky pl-1 pb-5 bottom-0 z-10 w-[85%] bg-white">
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex items-center justify-center w-full gap-4"
