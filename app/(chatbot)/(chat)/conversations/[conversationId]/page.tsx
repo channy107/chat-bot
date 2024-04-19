@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 import { Message } from "@components/chat/Message";
 import { getMessagesByConversation } from "@actions/conversation";
-import { useMessageStore } from "@store/message";
-import { useUserStore } from "@store/user";
+import { useMessageStore } from "@stores/message";
+import { useUserStore } from "@stores/user";
 
 type Props = {
   params: {

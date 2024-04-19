@@ -45,3 +45,9 @@ export const createConversation = async (name: string) => {
   revalidatePath("/");
   return result[0];
 };
+
+export const deleteConversation = async (id: string) => {
+  await db.delete(conversation).where(eq(conversation.id, id));
+
+  revalidatePath("/");
+};

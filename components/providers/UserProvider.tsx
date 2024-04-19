@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode, useEffect } from "react";
 import { getUser } from "@actions/user";
-import { useUserStore } from "@store/user";
+import { useUserStore } from "@stores/user";
 import { isSuccessResponse } from "@/types/guard";
 
 const UserProvider = ({ children }: { children: ReactNode }) => {

@@ -2,6 +2,6 @@
 
 import { Toaster } from "react-hot-toast";
 
-export function ToastProvider() {
+export function ToastRenderer() {
   return <Toaster />;
 }

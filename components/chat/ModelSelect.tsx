@@ -19,7 +19,7 @@ import {
 } from "@components/ui/command";
 import { Button } from "@components/ui/button";
 
-import { useModelStore } from "@store/model";
+import { useModelStore } from "@stores/model";
 import { cn } from "@lib/utils";
 
 export function ModelSelect() {

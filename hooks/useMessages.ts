@@ -1,5 +1,5 @@
 import { addMessage } from "@actions/message";
-import { useMessageStore } from "@store/message";
+import { useMessageStore } from "@stores/message";
 
 const useMessages = () => {
   const prevMessages = useMessageStore((state) => state.messages);

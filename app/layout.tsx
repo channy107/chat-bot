@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ReactQueryProvider } from "@components/providers/ReactQueryProvider";
-import { ToastProvider } from "@components/providers/ToastProvider";
+import { ModalRenderer } from "@components/ModalRenderer";
+import { ToastRenderer } from "@components/ToastRenderer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,7 +18,8 @@ export default async function RootLayout({
     <html lang="en">
       <body className="h-screen">
         <ReactQueryProvider>
-          <ToastProvider />
+          <ToastRenderer />
+          <ModalRenderer />
           {children}
         </ReactQueryProvider>
       </body>

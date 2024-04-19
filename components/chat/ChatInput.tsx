@@ -15,7 +15,7 @@ import { Button } from "@components/ui/button";
 import { createConversation } from "@actions/conversation";
 import { sendTestMessage } from "@actions/openAi";
 import { ChatFormSchema } from "@schemas/chat";
-import { useModelStore } from "@store/model";
+import { useModelStore } from "@stores/model";
 import useMessages from "@hooks/useMessages";
 
 export function ChatInput() {

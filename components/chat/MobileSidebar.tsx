@@ -2,6 +2,7 @@
 import { Menu } from "lucide-react";
 import { Sidebar } from "@components/chat/Sidebar";
 import { Sheet, SheetContent, SheetTrigger } from "@components/ui/sheet";
+import { useSheetStore } from "@stores/sheet";
 import { TConversation } from "@/types/db";
 
 type Props = {
@@ -9,9 +10,10 @@ type Props = {
 };
 
 export function MobileSidebar({ conversations }: Props) {
+  const { isOpen, setOpen } = useSheetStore();
   return (
     <div className="md:hidden">
-      <Sheet>
+      <Sheet open={isOpen} onOpenChange={(open) => setOpen(open)}>
         <SheetTrigger asChild>
           <Menu />
         </SheetTrigger>

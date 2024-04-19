@@ -3,8 +3,8 @@ import { useEffect, useRef } from "react";
 
 import { Empty } from "@components/chat/Empty";
 import { Message } from "@components/chat/Message";
-import { useMessageStore } from "@store/message";
-import { useUserStore } from "@store/user";
+import { useMessageStore } from "@stores/message";
+import { useUserStore } from "@stores/user";
 
 export default function NewPage() {
   const user = useUserStore((state) => state.user);
