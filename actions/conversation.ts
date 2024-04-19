@@ -7,7 +7,7 @@ export const getConversationsByUser = async () => {
   const session = await verifySession();
 
   const userInfo = await db.query.user.findFirst({
-    where: eq(user.email, session.email),
+    where: eq(user.id, session.id),
     with: {
       conversations: {
         orderBy: (conversation, { desc }) => [desc(conversation.createdAt)],

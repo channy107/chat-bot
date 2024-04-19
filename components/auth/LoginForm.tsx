@@ -61,7 +61,7 @@ export function LoginForm() {
           </div>
         </div>
         <FormError message={state?.errorMessage} />
-        <Submit text="로그인" />
+        <Submit className="w-full">로그인</Submit>
       </form>
     </FormCard>
   );

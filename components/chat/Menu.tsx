@@ -7,7 +7,7 @@ export async function Menu() {
   return (
     <nav className="flex p-4 md:p-0">
       <MobileSidebar conversations={conversations} />
-      <div className="hidden md:block h-screen w-[300px]">
+      <div className="hidden md:block w-[300px]">
         <Sidebar conversations={conversations} />
       </div>
     </nav>

@@ -1,3 +1,7 @@
+export type TMessageFormError = {
+  message?: string[];
+};
+
 export type TLoginFormError = {
   email?: string[];
   password?: string[];

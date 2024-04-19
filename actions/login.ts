@@ -32,14 +32,14 @@ export const login = async (
   }
 
   if (isSuccessResponse(user)) {
-    const { id, email, password: userPassword } = user.data;
+    const { id, password: userPassword } = user.data;
     const passwordMatch = await bcrypt.compare(password, userPassword);
 
     if (!passwordMatch) {
       return { errorMessage: "비밀번호가 일치하지 않습니다." };
     }
 
-    await createSession(email);
+    await createSession(id);
 
     redirect("/");
   }

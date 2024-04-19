@@ -72,7 +72,7 @@ export function SignUpForm() {
           </div>
         </div>
         <FormError message={state?.errorMessage} />
-        <Submit text="가입하기" />
+        <Submit className="w-full">가입하기</Submit>
       </form>
     </FormCard>
   );

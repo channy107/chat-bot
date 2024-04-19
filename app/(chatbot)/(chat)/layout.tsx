@@ -1,6 +1,7 @@
 import { ChatInput } from "@/components/chat/ChatInput";
 import { ModelSelect } from "@/components/chat/ModelSelect";
 import { Menu } from "@/components/chat/Menu";
+import UserProvider from "@/components/providers/UserProvider";
 
 export default function ChatLayout({
   children,
@@ -8,13 +9,17 @@ export default function ChatLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex md:p-0">
-      <Menu />
-      <div className="flex flex-col flex-1 p-2">
-        <ModelSelect />
-        {children}
-        <ChatInput />
+    <UserProvider>
+      <div className="flex md:p-0 h-full">
+        <Menu />
+        <div className="flex flex-col flex-1 overflow-y-auto">
+          <ModelSelect />
+          <div className="flex flex-col items-start md:items-center w-full h-full">
+            {children}
+            <ChatInput />
+          </div>
+        </div>
       </div>
-    </div>
+    </UserProvider>
   );
 }
