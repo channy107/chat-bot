@@ -4,11 +4,11 @@ import { ClipLoader } from "react-spinners";
 
 type Props = {
   email?: string;
-  message: string | null;
-  senderType: string;
+  content?: string | null;
+  senderType?: string;
 };
 
-export function Message({ email = "", message = "", senderType }: Props) {
+export function Message({ email = "", content = "", senderType }: Props) {
   const isAssistant = senderType === "assistant";
   const name = isAssistant ? "Chat GPT" : email;
 
@@ -21,7 +21,7 @@ export function Message({ email = "", message = "", senderType }: Props) {
       <div className="mt-2">
         <h2 className="font-bold">{name}</h2>
         <div className="mt-2 text-balance break-all w-full">
-          {message === "" ? <ClipLoader size={20} /> : message}
+          {content === "" ? <ClipLoader size={20} /> : content}
         </div>
       </div>
     </div>

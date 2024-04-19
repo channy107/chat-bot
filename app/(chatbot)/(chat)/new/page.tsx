@@ -15,10 +15,6 @@ export default function NewPage() {
     updateMessages([]);
   }, [updateMessages]);
 
-  useEffect(() => {
-    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
   return (
     <>
       <div className="flex justify-start w-[80%] h-full">
@@ -30,7 +26,7 @@ export default function NewPage() {
               <Message
                 key={index}
                 email={user.email}
-                message={message.message}
+                content={message.content}
                 senderType={message.senderType}
               />
             ))}

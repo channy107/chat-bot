@@ -1,13 +1,12 @@
 import { create } from "zustand";
+import { TMessage } from "@/types/db";
 
 type State = {
-  messages: Array<{ message: string | null; senderType: string }>;
+  messages: Partial<TMessage>[];
 };
 
 type Action = {
-  updateMessages: (
-    messages: Array<{ message: string | null; senderType: string }>
-  ) => void;
+  updateMessages: (messages: Partial<TMessage>[]) => void;
 };
 
 const useMessageStore = create<State & Action>((set) => ({

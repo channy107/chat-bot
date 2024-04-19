@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ReactQueryProvider } from "@components/providers/ReactQueryProvider";
 import { ToastProvider } from "@components/providers/ToastProvider";
 import "./globals.css";
 
@@ -15,8 +16,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="h-screen">
-        <ToastProvider />
-        {children}
+        <ReactQueryProvider>
+          <ToastProvider />
+          {children}
+        </ReactQueryProvider>
       </body>
     </html>
   );

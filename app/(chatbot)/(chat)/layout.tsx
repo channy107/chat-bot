@@ -15,7 +15,7 @@ export default function ChatLayout({
         <div className="flex flex-col flex-1 overflow-y-auto">
           <ModelSelect />
           <div className="flex flex-col items-start md:items-center w-full h-full">
-            {children}
+            <div className="flex-1 w-full md:w-[80%]">{children}</div>
             <ChatInput />
           </div>
         </div>
