@@ -9,7 +9,7 @@ import { Submit } from "@components/Submit";
 import { Input } from "@components/ui/input";
 import { Label } from "@components/ui/label";
 
-import { signUp } from "@actions/signUp";
+import { signUp } from "@actions/signup";
 import { useFormValidate } from "@hooks/useFormValidate";
 import { SignUpSchema } from "@schemas/auth";
 import { TSignUpFormError } from "@/types/form";
