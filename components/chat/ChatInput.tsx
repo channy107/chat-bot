@@ -2,11 +2,11 @@
 
 import { z } from "zod";
 import OpenAI from "openai";
-import { useRef, useState } from "react";
-import { ArrowUp } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { ArrowUp } from "lucide-react";
 
 import AutoResizingTextarea from "@components/chat/AutoReSizingTextArea";
 import { Form, FormControl, FormField, FormItem } from "@components/ui/form";

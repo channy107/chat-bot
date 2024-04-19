@@ -1,6 +1,6 @@
 "use client";
-import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 import { ClipLoader } from "react-spinners";
+import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 
 type Props = {
   email?: string;

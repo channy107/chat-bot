@@ -2,8 +2,8 @@
 import { ChangeEvent, useEffect } from "react";
 import { useFormState } from "react-dom";
 
-import { FormCard } from "@/components/auth/FormCard";
-import { FormMessage } from "@/components/FormMessage";
+import { FormCard } from "@components/auth/FormCard";
+import { FormMessage } from "@components/FormMessage";
 import { FormError } from "@components/FormError";
 import { Submit } from "@components/Submit";
 import { Input } from "@components/ui/input";
@@ -26,7 +26,7 @@ export function SignUpForm() {
 
   useEffect(() => {
     setErrors(state?.errors);
-  }, [state]);
+  }, [state, setErrors]);
 
   return (
     <FormCard

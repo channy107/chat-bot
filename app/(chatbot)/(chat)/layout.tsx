@@ -1,7 +1,7 @@
-import { ChatInput } from "@/components/chat/ChatInput";
-import { ModelSelect } from "@/components/chat/ModelSelect";
-import { Menu } from "@/components/chat/Menu";
-import UserProvider from "@/components/providers/UserProvider";
+import UserProvider from "@components/providers/UserProvider";
+import { ChatInput } from "@components/chat/ChatInput";
+import { ModelSelect } from "@components/chat/ModelSelect";
+import { Menu } from "@components/chat/Menu";
 
 export default function ChatLayout({
   children,

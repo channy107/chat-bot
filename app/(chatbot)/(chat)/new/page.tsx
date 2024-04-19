@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+
 import { Empty } from "@components/chat/Empty";
 import { Message } from "@components/chat/Message";
 import { useMessageStore } from "@store/message";
@@ -17,7 +18,7 @@ export default function NewPage() {
 
   return (
     <>
-      <div className="flex justify-start w-[80%] h-full">
+      <div className="flex flex-col h-full w-[80%]">
         {messages.length === 0 ? (
           <Empty />
         ) : (

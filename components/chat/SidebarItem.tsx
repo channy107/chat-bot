@@ -1,9 +1,10 @@
 "use client";
 
 import { ReactNode, MouseEvent } from "react";
+import { Trash } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Trash } from "lucide-react";
+
 import { cn } from "@lib/utils";
 
 type Props = {
@@ -26,7 +27,7 @@ export function SidebarItem({ item }: Props) {
 
   return (
     <>
-      <Link href={href}>
+      <Link href={href} scroll={false}>
         <div
           className={cn(
             "flex items-center justify-between h-[50px] text-sm group hover:text-white hover:bg-white/10 rounded-lg transition",
