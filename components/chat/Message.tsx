@@ -1,6 +1,7 @@
 "use client";
 import { ClipLoader } from "react-spinners";
 import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
+import { SENDER_TYPE } from "@/constants/openai";
 
 type Props = {
   email?: string;
@@ -9,7 +10,7 @@ type Props = {
 };
 
 export function Message({ email = "", content = "", senderType }: Props) {
-  const isAssistant = senderType === "assistant";
+  const isAssistant = senderType === SENDER_TYPE.ASSISTANT;
   const name = isAssistant ? "Chat GPT" : email;
 
   return (

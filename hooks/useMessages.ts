@@ -1,3 +1,4 @@
+import { SENDER_TYPE } from "@/constants/openai";
 import { addMessage } from "@actions/message";
 import { useMessageStore } from "@stores/message";
 
@@ -11,8 +12,8 @@ const useMessages = () => {
   ) => {
     const newMessages = [
       ...prevMessages,
-      { content: userMessage, senderType: "user" },
-      { content: assistantMessage, senderType: "assistant" },
+      { content: userMessage, senderType: SENDER_TYPE.USER },
+      { content: assistantMessage, senderType: SENDER_TYPE.ASSISTANT },
     ];
     updateMessages(newMessages);
   };

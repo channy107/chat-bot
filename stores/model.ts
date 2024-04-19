@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { DEFAULT_MODEL } from "@/constants/openai";
 
 type State = {
   model: string;
@@ -9,7 +10,7 @@ type Action = {
 };
 
 const useModelStore = create<State & Action>((set) => ({
-  model: "gpt-3.5-turbo",
+  model: DEFAULT_MODEL,
   updateModel: (model: string) => set({ model }),
 }));
 

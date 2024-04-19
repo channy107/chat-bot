@@ -57,6 +57,7 @@ export default function TuningListPage() {
     };
     setFilter(newFilter);
   };
+
   return (
     <div className="mt-[40px] md:mt-[80px]">
       <div className="flex justify-between px-2">
