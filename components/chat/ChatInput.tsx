@@ -13,7 +13,7 @@ import { Form, FormControl, FormField, FormItem } from "@components/ui/form";
 import { Button } from "@components/ui/button";
 
 import { createConversation } from "@actions/conversation";
-import { sendTestMessage } from "@actions/openAi";
+import { sendTestMessage } from "@actions/openai";
 import { ChatFormSchema } from "@schemas/chat";
 import { useModelStore } from "@stores/model";
 import useMessages from "@hooks/useMessages";

@@ -24,6 +24,7 @@
       "@components/*": ["./components/*"],
       "@lib/*": ["./lib/*"],
       "@hooks/*": ["./hooks/*"],
+      "@queries/*": ["./queries/*"],
       "@db/*": ["./db/*"],
       "@schemas/*": ["./schemas/*"],
       "@stores/*": ["./stores/*"]

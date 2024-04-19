@@ -7,7 +7,7 @@ import { createSession } from "@actions/sessions";
 import { STATUS_CODE } from "@constants/statusCode";
 import { LoginSchema } from "@schemas/auth";
 import { TFormState, TLoginFormError } from "@/types/form";
-import { isSuccessResponse } from "@/types/guard";
+import { isSuccessResponse } from "@lib/guard";
 
 export const login = async (
   state: TFormState<TLoginFormError>,

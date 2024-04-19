@@ -2,7 +2,7 @@
 import { ReactNode, useEffect } from "react";
 import { getUser } from "@actions/user";
 import { useUserStore } from "@stores/user";
-import { isSuccessResponse } from "@/types/guard";
+import { isSuccessResponse } from "@lib/guard";
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
   const updateUser = useUserStore((state) => state.updateUser);
